@@ -26,7 +26,8 @@ html, body {
 .letras {
     display: flex;
     flex-direction: column;
-    padding-top:50px
+    padding-top:50px;
+    width:90%
 }
 
 /* INTRO */
@@ -44,13 +45,13 @@ html, body {
 }
 #pImg,#pTexto {
     max-height: 100%;
-    width: 50%;
+    width:400px
 }
 #pImg {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px
+    padding: 0px;
 }
 #pTexto {
     padding: 50px;

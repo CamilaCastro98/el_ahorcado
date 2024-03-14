@@ -20,9 +20,10 @@ function intro4() {
     contPalabra.textContent = 'EL AHORCADO'
 }
 function introTotal(cb1,cb2,cb3,cb4) {
-    cb1()
-    cb2()
-    cb3()
-    cb4()
+    setTimeout(cb1,2000)
+    setTimeout(cb2,4000)
+    setTimeout(cb3,6000)
+    setTimeout(cb4,8000)
 }
 introTotal(intro1,intro2,intro3,intro4)
+
