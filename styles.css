@@ -19,7 +19,7 @@ html, body {
     display:flex;
     justify-content: center;
 }
-#laHorca {
+.laHorca {
     width: 500px;
     height:auto;
 }
