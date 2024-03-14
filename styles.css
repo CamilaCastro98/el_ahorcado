@@ -5,6 +5,10 @@
 .progresoDelJuego {
     display: flex;
 }
+.letras {
+    display: flex;
+    flex-direction: column;
+}
 .opciones {
     display: flex;
 }
