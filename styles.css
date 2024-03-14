@@ -27,6 +27,7 @@ html, body {
     display: flex;
     flex-direction: column;
     width:90%;
+    background-color: brown;
 }
 #letrasDescartadas {
     flex: 2 1 0;
@@ -44,12 +45,16 @@ html, body {
     text-align: center;
     padding:30px;
 }
+.intro {
+    background-color: aqua;
+}
 #palabra {
     flex: 1 1 0;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px;
+    background-color: blue;
 }
 #contPalabra {
     width: 100%;
