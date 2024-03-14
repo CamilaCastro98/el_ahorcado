@@ -47,6 +47,26 @@ html, body {
 }
 .intro {
     background-color: aqua;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%
+}
+#presentacion1{
+    font-size: 40px;
+    background-color: darkcyan;
+}
+#presentacion2 {
+    display: flex;
+    background-color: darkorange;
+    flex: 1
+}
+#pImg {
+    flex: 1;
+    background-color: green;
+}
+#pTexto {
+    flex:1
 }
 #palabra {
     flex: 1 1 0;
