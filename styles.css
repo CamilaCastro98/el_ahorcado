@@ -28,13 +28,13 @@ html, body {
     flex-direction: column;
     width:90%;
 }
-.letrasDescartadas {
+#letrasDescartadas {
     flex: 2 1 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#contDescarte {
+.contDescarte {
     background-color: aliceblue;
     box-sizing: border-box;
     width: 50%;
