@@ -1,0 +1,10 @@
+#juego {
+    display: flex;
+    flex-direction: column;
+}
+.progresoDelJuego {
+    display: flex;
+}
+.opciones {
+    display: flex;
+}
