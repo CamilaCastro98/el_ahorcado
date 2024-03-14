@@ -1,14 +1,75 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 #juego {
     display: flex;
     flex-direction: column;
+    background-color: brown;
+    height:100%
 }
+
 .progresoDelJuego {
     display: flex;
+    background-color: blueviolet;
+    height:80%
+}
+#ahorcado {
+    width:60%;
+    display:flex;
+    justify-content: center;
+}
+#laHorca {
+    width: 80%;
+    height:auto;
 }
 .letras {
     display: flex;
     flex-direction: column;
+    background-color: cornflowerblue;
+    width:100%
 }
+#letrasDescartadas {
+    flex: 2 1 0;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contDescarte {
+    background-color: aliceblue;
+    box-sizing: border-box;
+    width: 50%;
+    height: 65%;
+    border: 15px solid black;
+    font-size: 70px;
+    text-align: center;
+    padding:30px;
+}
+#palabra {
+    flex: 1 1 0;
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contPalabra {
+    background-color: aliceblue;
+    width: 90%;
+    height: 70%;
+    font-size: 90px;
+}
+
 .opciones {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
 }
+#reiniciarBtn {
+    width: 45%;
+    height: 70%;
+    font-size: 70px;
+}
+
