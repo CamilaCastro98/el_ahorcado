@@ -1,4 +1,4 @@
-//INTRO
+// COMIENZO DE INTRO
 
 const presentacion1 = document.querySelector('#presentacion1')
 const imagenIntro = document.querySelector('#pImg')
@@ -44,8 +44,10 @@ function introTotal(cb1,cb2,cb3,cb4,cb5) {
     setTimeout(cb1,2000)
     setTimeout(cb2,4000)
     setTimeout(cb3,6000)
-    setTimeout(cb4,8000)
+    setTimeout(cb4,10000)
     setTimeout(cb5,10000)
 }
 introTotal(intro1,intro2,intro3,intro4,intro5)
+// FIN DE INTRO
 
+//COMIENZO DE JUEGO
