@@ -97,6 +97,9 @@ html, body {
     font-size: 120px;
     background-color: blue;
 }
+.divLetra {
+    background-color: rgb(247, 0, 255);
+}
 
 /* OPCIONES Y BOTONES */
 

@@ -82,7 +82,23 @@ reiniciarBtn.addEventListener('click',borrarIntro)
         //Funcion para obtener una palabra aleatoria del arreglo
 function getPalabraRandom() {
     var nroRandom = Math.round(Math.random()*(arrayTodasPalabras.length -1))
-    var arrayPalabra = arrayTodasPalabras[nroRandom]
+    var arrayPalabra = arrayTodasPalabras[nroRandom].split('')
     return arrayPalabra
 }
-
+        //Funcion para crear la palabra oculta del ahorcado
+function getDivsDePalabra() {
+    var letra
+    var palabraAleatoria = getPalabraRandom()
+    for(let i = 0 ; i < palabraAleatoria.length ; i++) {
+        letra = palabraAleatoria[i]
+       const divLetra = document.createElement('div')
+       divLetra.classList.add('divLetra')
+       if(i === 0) {
+        divLetra.classList.add('primeraLetra')
+        divLetra.textContent = letra
+       } else {
+        divLetra.classList.add(letra)
+       }
+       contPalabra.appendChild(divLetra)
+    }
+}
