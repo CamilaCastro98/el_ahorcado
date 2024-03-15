@@ -91,9 +91,11 @@ html, body {
     align-items: center;
     padding: 0px;
     height: 100%;
+    background-color: aqua;
 }
 #contPalabra {
     font-size: 120px;
+    background-color: blue;
 }
 
 /* OPCIONES Y BOTONES */

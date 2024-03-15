@@ -73,5 +73,7 @@ function borrarIntro() {
     letrasDescartadas.removeAttribute('id')
     letrasDescartadas.id = 'letrasDescartadas'
 
+    contPalabra.textContent = ''
+
 }
 reiniciarBtn.addEventListener('click',borrarIntro)
