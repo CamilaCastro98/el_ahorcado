@@ -96,12 +96,14 @@ function getDivsDeLetra() {
         divLetra.classList.add('primeraLetra')
         divLetra.textContent = letra
        } else {
-        divLetra.classList.add(letra)
+        divLetra.id = letra
+        divLetra.classList.add('letraOculta')
         divLetra.textContent = '-'
        }
        contPalabra.appendChild(divLetra)
     }
 }
+
         //SE IRA MODIFICANDO DESPUES Funcion para meter dentro del evento del boton de inicio. Borra el inicio y elige palabra
 
 function comienzoDelJuego() {
