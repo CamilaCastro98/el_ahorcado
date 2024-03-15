@@ -100,7 +100,24 @@ function getPalabraRandom() {
     return arrayPalabra
 }
 
-        //Funcion para agregar a las letras ocultas un evento que evalue si la tecla presionada es la letra oculta
+    //Funcion para agregar al input un evento que evalue si la tecla presionada es la letra oculta
+var intentos = 0
+function evaluarInput() {
+    inputContent.addEventListener('keypress',function(e){
+            var contador = 0
+            var allDivLetra = document.querySelectorAll('.divLetra')
+            for(let i = 0 ; i < allDivLetra.length ; i++){
+                if(allDivLetra[i].id === e.key) {
+                    allDivLetra[i].textContent = e.key
+                } else {
+                    contador++
+                }
+            }
+            if (contador === allDivLetra.length) {
+                intentos ++
+            }
+    })
+}
 
         //Funcion para crear la palabra oculta del ahorcado
 function getDivsDeLetra() {
@@ -120,8 +137,10 @@ function getDivsDeLetra() {
        }
        contPalabra.appendChild(divLetra)
     }
+    evaluarInput()
     return palabraAleatoria
 }
+
         
 
 
