@@ -127,7 +127,7 @@ function getDivsDeLetra() {
         letra = palabraAleatoria[i]
         const divLetra = document.createElement('div')
        divLetra.classList.add('divLetra')
-       if(i === 0) {
+       if(palabraAleatoria[i] === palabraAleatoria[0]) {
         divLetra.classList.add('primeraLetra')
         divLetra.textContent = letra
        } else {
@@ -137,7 +137,6 @@ function getDivsDeLetra() {
        }
        contPalabra.appendChild(divLetra)
     }
-    evaluarInput()
     return palabraAleatoria
 }
 
@@ -150,6 +149,7 @@ function getDivsDeLetra() {
 function comienzoDelJuego() {
     borrarIntro()
     getDivsDeLetra()
+    evaluarInput()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
