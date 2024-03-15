@@ -102,6 +102,7 @@ function getPalabraRandom() {
 
     //Funcion para agregar al input un evento que evalue si la tecla presionada es la letra oculta
 var intentos = 0
+const contDescarte = intro
 function evaluarInput() {
     inputContent.addEventListener('keypress',function(e){
             var contador = 0
@@ -115,6 +116,7 @@ function evaluarInput() {
             }
             if (contador === allDivLetra.length) {
                 intentos ++
+                contDescarte.textContent += e.key + ' '
             }
     })
 }
