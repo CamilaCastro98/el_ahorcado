@@ -73,6 +73,7 @@ html, body {
     height: 100%;
     padding-left: 30%;
     padding-top: 10%;
+    background-color: chartreuse;
 }
 .contDescarte {
     background-color: aliceblue;
@@ -100,6 +101,15 @@ html, body {
 }
 .divLetra {
     background-color: rgb(247, 0, 255);
+}
+
+.inputDiv {
+background-color: blue;
+width: 50%;
+}
+#input {
+background-color: darkmagenta;
+
 }
 
 /* OPCIONES Y BOTONES */

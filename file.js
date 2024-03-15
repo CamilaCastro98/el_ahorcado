@@ -58,6 +58,9 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 //COMIENZO DE JUEGO
     //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
+const inputDiv = document.createElement('div')
+const inputContent = document.createElement('input')
+inputContent.type = 'text'
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
@@ -73,6 +76,11 @@ function borrarIntro() {
     letrasDescartadas.removeAttribute('id')
     letrasDescartadas.id = 'letrasDescartadas'
 
+    inputDiv.classList.add('inputDiv')
+    inputContent.id = 'input'
+    letrasDescartadas.appendChild(inputDiv)
+    letrasDescartadas.insertBefore(inputContent,intro)
+
     contPalabra.textContent = ''
 
 }
@@ -84,13 +92,16 @@ function getPalabraRandom() {
     var arrayPalabra = arrayTodasPalabras[nroRandom].split('')
     return arrayPalabra
 }
+
+        //Funcion para agregar a las letras ocultas un evento que evalue si la tecla presionada es la letra oculta
+
         //Funcion para crear la palabra oculta del ahorcado
 function getDivsDeLetra() {
     var letra
-    var palabraAleatoria = getPalabraRandom()
+    let palabraAleatoria = getPalabraRandom()
     for(let i = 0 ; i < palabraAleatoria.length ; i++) {
         letra = palabraAleatoria[i]
-       const divLetra = document.createElement('div')
+        const divLetra = document.createElement('div')
        divLetra.classList.add('divLetra')
        if(i === 0) {
         divLetra.classList.add('primeraLetra')
@@ -102,7 +113,11 @@ function getDivsDeLetra() {
        }
        contPalabra.appendChild(divLetra)
     }
+    return palabraAleatoria
 }
+        
+
+
 
         //SE IRA MODIFICANDO DESPUES Funcion para meter dentro del evento del boton de inicio. Borra el inicio y elige palabra
 
@@ -111,3 +126,6 @@ function comienzoDelJuego() {
     getDivsDeLetra()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
+
+//CUANDO TERMINES TODAS LAS FUNCIONES JUNTALAS EN UNA UNICA FUNCION QUE SE LLAME JUEGO, Y MANEJA QUE LA 
+//VARIABLE PALABRAALEATORIA SEA GLOBAL DENTRO DE LA FUNCION JUEGO, ASI NO HAY QUE ESTAR RETORNANDOLA EN CADA SUBFUNCION
