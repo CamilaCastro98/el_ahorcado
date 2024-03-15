@@ -56,7 +56,7 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 // FIN DE INTRO
 
 //COMIENZO DE JUEGO
-    //BORRAR INTRO Y COMENZAR JUEGO
+    //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
@@ -76,7 +76,6 @@ function borrarIntro() {
     contPalabra.textContent = ''
 
 }
-reiniciarBtn.addEventListener('click',borrarIntro)
 
     //JUEGO
         //Funcion para obtener una palabra aleatoria del arreglo
@@ -86,7 +85,7 @@ function getPalabraRandom() {
     return arrayPalabra
 }
         //Funcion para crear la palabra oculta del ahorcado
-function getDivsDePalabra() {
+function getDivsDeLetra() {
     var letra
     var palabraAleatoria = getPalabraRandom()
     for(let i = 0 ; i < palabraAleatoria.length ; i++) {
@@ -98,7 +97,15 @@ function getDivsDePalabra() {
         divLetra.textContent = letra
        } else {
         divLetra.classList.add(letra)
+        divLetra.textContent = '-'
        }
        contPalabra.appendChild(divLetra)
     }
 }
+        //SE IRA MODIFICANDO DESPUES Funcion para meter dentro del evento del boton de inicio. Borra el inicio y elige palabra
+
+function comienzoDelJuego() {
+    borrarIntro()
+    getDivsDeLetra()
+}
+reiniciarBtn.addEventListener('click',comienzoDelJuego)

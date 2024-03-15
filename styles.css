@@ -95,6 +95,7 @@ html, body {
 }
 #contPalabra {
     font-size: 120px;
+    display: flex;
     background-color: blue;
 }
 .divLetra {
