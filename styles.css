@@ -27,13 +27,16 @@ html, body {
     display: flex;
     flex-direction: column;
     padding-top:50px;
-    width:90%
+    width:90%;
 }
 
 /* INTRO */
 .intro {
     display:flex;
     flex-direction: column;
+}
+#introContenedor {
+    display: flex;
 }
 #presentacion1,#pTexto {
     font-size: 35px;
@@ -67,12 +70,15 @@ html, body {
 
 #letrasDescartadas {
     display: flex;
+    height: 100%;
+    padding-left: 30%;
+    padding-top: 10%;
 }
 .contDescarte {
     background-color: aliceblue;
     box-sizing: border-box;
     width: 50%;
-    height: 65%;
+    height: 150px;
     border: 15px solid black;
     font-size: 70px;
     text-align: center;
@@ -90,13 +96,15 @@ html, body {
     font-size: 120px;
 }
 
+/* OPCIONES Y BOTONES */
+
 .opciones {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 20%;
 }
-#reiniciarBtn {
+#reiniciarBtn,#otraPalabraBtn {
     width: 45%;
     height: 70%;
     font-size: 70px;

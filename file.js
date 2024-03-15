@@ -1,11 +1,19 @@
 // COMIENZO DE INTRO
 
 const presentacion1 = document.querySelector('#presentacion1')
+const presentacion2 = document.querySelector('#presentacion2')
 const imagenIntro = document.querySelector('#pImg')
 const textoIntro = document.querySelector('#pTexto')
 const contPalabra = document.querySelector('#contPalabra')
 const ahorcado = document.querySelector('#ahorcado')
+const intro = document.querySelector('.intro')
+const letrasDescartadas = document.querySelector('#introContenedor')
+
 const opciones = document.querySelector('.opciones')
+const musicaBtn = document.createElement('button')
+const reiniciarBtn = document.createElement('button')
+const helpBtn = document.createElement('button')
+
 function intro1() {
     presentacion1.textContent = 'Hola. Este es Bob.'
 }
@@ -26,9 +34,6 @@ function intro4() {
     ahorcado.appendChild(horca)
 }
 function intro5() {
-    const musicaBtn = document.createElement('button')
-    const reiniciarBtn = document.createElement('button')
-    const helpBtn = document.createElement('button')
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
     reiniciarBtn.id='reiniciarBtn'
@@ -51,3 +56,22 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 // FIN DE INTRO
 
 //COMIENZO DE JUEGO
+    //BORRAR INTRO Y COMENZAR JUEGO
+const otraPalabraBtn = document.createElement('button')
+function borrarIntro() {
+    opciones.removeChild(reiniciarBtn)
+    otraPalabraBtn.id = 'otraPalabraBtn'
+    otraPalabraBtn.textContent = 'OTRA PALABRA'
+    opciones.insertBefore(otraPalabraBtn,helpBtn)
+
+    intro.removeChild(presentacion1)
+    intro.removeChild(presentacion2)
+
+    intro.classList.remove('intro')
+    intro.classList.add('contDescarte')
+
+    letrasDescartadas.removeAttribute('id')
+    letrasDescartadas.id = 'letrasDescartadas'
+
+}
+reiniciarBtn.addEventListener('click',borrarIntro)
