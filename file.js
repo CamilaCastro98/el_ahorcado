@@ -61,8 +61,6 @@ const otraPalabraBtn = document.createElement('button')
 const bobQuejas = document.createElement('div')
 const inputDiv = document.createElement('div')
 const inputContent = document.createElement('input')
-inputContent.type = 'text'
-inputContent.maxLength = '1'
 
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
@@ -81,6 +79,8 @@ function borrarIntro() {
 
     inputDiv.classList.add('inputDiv')
     inputContent.id = 'input'
+    inputContent.type = 'text'
+    inputContent.maxLength = '1'
     letrasDescartadas.appendChild(inputDiv)
     letrasDescartadas.insertBefore(inputContent,intro)
 
@@ -100,25 +100,29 @@ function getPalabraRandom() {
     return arrayPalabra
 }
 
+        //Funcion (e) para luego meter dentro del evento del input
+var eventoInput = function(e){
+    var contador = 0
+    var allDivLetra = document.querySelectorAll('.divLetra')
+    for(let i = 0 ; i < allDivLetra.length ; i++){
+        if(allDivLetra[i].id === e.key) {
+            allDivLetra[i].textContent = e.key
+        } else {
+            contador++
+        }
+    }
+    if (contador === allDivLetra.length) {
+        intentos ++
+        contDescarte.textContent += e.key + ' '
+    }
+    finDelJuego(allDivLetra)
+}
+
     //Funcion para agregar al input un evento que evalue si la tecla presionada es la letra oculta
 var intentos = 0
 const contDescarte = intro
 function evaluarInput() {
-    inputContent.addEventListener('keypress',function(e){
-            var contador = 0
-            var allDivLetra = document.querySelectorAll('.divLetra')
-            for(let i = 0 ; i < allDivLetra.length ; i++){
-                if(allDivLetra[i].id === e.key) {
-                    allDivLetra[i].textContent = e.key
-                } else {
-                    contador++
-                }
-            }
-            if (contador === allDivLetra.length) {
-                intentos ++
-                contDescarte.textContent += e.key + ' '
-            }
-    })
+    inputContent.addEventListener('keypress',eventoInput)
 }
 
         //Funcion para crear la palabra oculta del ahorcado
@@ -140,6 +144,25 @@ function getDivsDeLetra() {
        contPalabra.appendChild(divLetra)
     }
     return palabraAleatoria
+}
+
+        //Funcion para detener el juego
+function finDelJuego(array){
+    if(intentos === 7) {
+        inputContent.removeEventListener('keypress',eventoInput)
+        bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
+    } else {
+        var k = 0
+        for(let i = 0 ; i < array.length ; i++) {
+            if(array[i].id === array[i].textContent){
+                k++
+            }
+        }
+        if(k === array.length - 1) {
+            inputContent.removeEventListener('keypress',eventoInput)
+            bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+        }
+    }
 }
 
         
