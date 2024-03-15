@@ -105,11 +105,15 @@ html, body {
 
 .inputDiv {
 background-color: blue;
-width: 50%;
 }
 #input {
 background-color: darkmagenta;
 
+}
+
+#bobQuejas {
+    background-color: darkorange;
+    width: 20%;
 }
 
 /* OPCIONES Y BOTONES */

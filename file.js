@@ -58,9 +58,12 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 //COMIENZO DE JUEGO
     //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
+const bobQuejas = document.createElement('div')
 const inputDiv = document.createElement('div')
 const inputContent = document.createElement('input')
 inputContent.type = 'text'
+inputContent.maxLength = '1'
+
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
@@ -80,6 +83,10 @@ function borrarIntro() {
     inputContent.id = 'input'
     letrasDescartadas.appendChild(inputDiv)
     letrasDescartadas.insertBefore(inputContent,intro)
+
+    bobQuejas.id = 'bobQuejas'
+    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+    letrasDescartadas.insertBefore(bobQuejas,inputContent)
 
     contPalabra.textContent = ''
 
