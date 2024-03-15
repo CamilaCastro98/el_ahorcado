@@ -1,4 +1,4 @@
-const arrayPalabras = ["almohada",
+const arrayTodasPalabras = ["almohada",
 "arcoiris",
 "barco",
 "dulce",

@@ -77,3 +77,12 @@ function borrarIntro() {
 
 }
 reiniciarBtn.addEventListener('click',borrarIntro)
+
+    //JUEGO
+        //Funcion para obtener una palabra aleatoria del arreglo
+function getPalabraRandom() {
+    var nroRandom = Math.round(Math.random()*(arrayTodasPalabras.length -1))
+    var arrayPalabra = arrayTodasPalabras[nroRandom]
+    return arrayPalabra
+}
+
