@@ -105,7 +105,7 @@ var eventoInput = function(e){
     var contador = 0
     var allDivLetra = document.querySelectorAll('.divLetra')
     for(let i = 0 ; i < allDivLetra.length ; i++){
-        if(allDivLetra[i].id === e.key) {
+        if(allDivLetra[i].id === e.key || allDivLetra[i].textContent === e.key) {
             allDivLetra[i].textContent = e.key
         } else {
             contador++
