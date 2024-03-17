@@ -58,17 +58,21 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 //COMIENZO DE JUEGO
      //Funciones para crear los 5 divs que tapen a Bob
 function crearDivsDeBob1() {
-    for (let i = 1; i < 4 ;i++) {
+    for (let i = 4; i > 1 ;i--) {
         const divTapador = document.createElement('div')
-        divTapador.id = i
+        if(i < 4) {
+            divTapador.id = 'div'+(5-i)
+        } else {
+            divTapador.id = 'div'+i
+        }
         divTapador.classList.add('divTapador')
         bobSubcont1.appendChild(divTapador)
     }
 }
 function crearDivsDeBob2() {
-    for (let i = 4; i < 6 ;i++) {
+    for (let i = 5; i < 7 ;i++) {
         const divTapador = document.createElement('div')
-        divTapador.id = i
+        divTapador.id = 'div'+i
         divTapador.classList.add('divTapador')
         bobSubcont2.appendChild(divTapador)
     }
@@ -114,12 +118,12 @@ function borrarIntro() {
 
     bobContenedor.classList.add('bobContenedor')
     bob.id = 'bobImg'
-    bob.src = './imagenes/normal.png'
+    bob.src = './imagenes/normal_cuello.png'
     divsBobContenedor.classList.add('divsBobContenedor')
     bobSubcont1.id = 'bobSubcont1'
     bobSubcont2.id = 'bobSubcont2'
-    ahorcado.appendChild(bobContenedor)
-    bobContenedor.appendChild(bob)
+   // ahorcado.appendChild(bobContenedor)
+   // bobContenedor.appendChild(bob)
     ahorcado.appendChild(divsBobContenedor)
     divsBobContenedor.appendChild(bobSubcont1)
     divsBobContenedor.appendChild(bobSubcont2)
@@ -133,6 +137,21 @@ var arrayPalabra
 function getPalabraRandom() {
     var nroRandom = Math.round(Math.random()*(arrayTodasPalabras.length -1))
         arrayPalabra = arrayTodasPalabras[nroRandom].split('')
+}
+
+        //Funcion para ir agregando partes de bob
+function agregarPartesDeBob() {
+    if (intentos === 1) {
+        ahorcado.appendChild(bobContenedor)
+        bobContenedor.appendChild(bob)
+    } else {
+        for (let i=2; i<7 ; i++) {
+            if (i === intentos) {
+                const divIntento = document.querySelector('#div'+i)
+                divIntento.setAttribute('style','background:transparent')
+            }
+        }
+    }
 }
 
         //Funcion (e) para luego meter dentro del evento del input
@@ -149,6 +168,7 @@ var eventoInput = function(e){
     if (contador === allDivLetra.length) {
         intentos ++
         contDescarte.textContent += e.key + ' '
+        agregarPartesDeBob()
     }
     finDelJuego(allDivLetra)
 }
@@ -186,6 +206,7 @@ function finDelJuego(array){
     if(intentos === 7) {
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
+        bob.src = './imagenes/muerto_cuello.png'
     } else {
         console.log(array)
         for(let i = 0 ; i < array.length ; i++) {
