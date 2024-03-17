@@ -154,7 +154,8 @@ function agregarPartesDeBob() {
 
         //Funcion (e) para luego meter dentro del evento del input
 var eventoInput = function(e){
-    var contador = 0
+    if(e.key >= 'a' && e.key <= 'z')
+   { var contador = 0
     var allDivLetra = document.querySelectorAll('.divLetra')
     for(let i = 0 ; i < allDivLetra.length ; i++){
         if(allDivLetra[i].textContent.toLowerCase() === e.key){
@@ -170,8 +171,9 @@ var eventoInput = function(e){
         intentos ++
         contDescarte.textContent += e.key + ' '
         agregarPartesDeBob()
+        //Creo que aca iria para poner a bob desesperado por unos segundos
     }
-    finDelJuego(allDivLetra)
+    finDelJuego(allDivLetra)}
 }
 
     //Funcion para agregar al input un evento que evalue si la tecla presionada es la letra oculta
@@ -255,5 +257,6 @@ juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
-//PROBLEMAS: Si usuario selecciona una letra igual a la primera, cambia de upper a lowercase
+//PROBLEMAS:
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
+//Filtrar cuando el input es otra cosa que letras en minuscula
