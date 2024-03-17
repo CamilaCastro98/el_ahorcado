@@ -163,7 +163,7 @@ var eventoInput = function(e){
             contador++
         }
     }
-    if (contador === allDivLetra.length) {
+    if (contador === allDivLetra.length && !contDescarte.textContent.includes(e.key)) {
         intentos ++
         contDescarte.textContent += e.key + ' '
         agregarPartesDeBob()
