@@ -109,6 +109,12 @@ html, body {
     left:33.5%
     
 }
+.bobContenedorGanador{
+    position: absolute;
+    top:50%;
+    left:33.5%
+    
+}
 #bobImg {
     width:250px;
     height: auto;

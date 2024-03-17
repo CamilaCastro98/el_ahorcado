@@ -122,8 +122,6 @@ function borrarIntro() {
     divsBobContenedor.classList.add('divsBobContenedor')
     bobSubcont1.id = 'bobSubcont1'
     bobSubcont2.id = 'bobSubcont2'
-   // ahorcado.appendChild(bobContenedor)
-   // bobContenedor.appendChild(bob)
     ahorcado.appendChild(divsBobContenedor)
     divsBobContenedor.appendChild(bobSubcont1)
     divsBobContenedor.appendChild(bobSubcont2)
@@ -215,6 +213,10 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+                bobContenedor.classList.remove('bobContenedor')
+                bobContenedor.classList.add('bobContenedorGanador')
+                bob.src = './imagenes/feliz.png'
+                ahorcado.removeChild(divsBobContenedor)
             }
         }
     }
