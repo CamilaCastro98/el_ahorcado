@@ -200,6 +200,7 @@ function getDivsDeLetra() {
        }
        contPalabra.appendChild(divLetra)
     }
+    console.log(palabraAleatoria)
     return palabraAleatoria
 }
 
@@ -217,6 +218,10 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+                if(!ahorcado.contains(bobContenedor)) {
+                    ahorcado.appendChild(bobContenedor)
+                    bobContenedor.appendChild(bob)
+                }
                 bobContenedor.classList.remove('bobContenedor')
                 bobContenedor.classList.add('bobContenedorGanador')
                 bob.src = './imagenes/feliz.png'
@@ -247,6 +252,5 @@ juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
-//PROBLEMAS: Si usuario adivina palabra sin equivocarse, no aparece bob feliz porque el contenedor de Bob nunca es creado
+//PROBLEMAS:
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
-//Hay que hacer que cuando letra se encuentra en descarte, que no cuente de nuevo en caja de descarte ni en intento
