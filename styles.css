@@ -73,7 +73,6 @@ html, body {
     height: 100%;
     padding-left: 30%;
     padding-top: 10%;
-    background-color: chartreuse;
 }
 .contDescarte {
     background-color: aliceblue;
@@ -92,28 +91,21 @@ html, body {
     align-items: center;
     padding: 0px;
     height: 100%;
-    background-color: aqua;
 }
 #contPalabra {
     font-size: 120px;
     display: flex;
-    background-color: blue;
 }
-.divLetra {
-    background-color: rgb(247, 0, 255);
-}
-
-.inputDiv {
-background-color: blue;
-}
-#input {
-background-color: darkmagenta;
-
-}
-
 #bobQuejas {
-    background-color: darkorange;
     width: 20%;
+}
+
+.bobContenedor {
+    display: flex;
+    flex-direction: column;
+}
+#bobSubcont1,#bobSubcont2 {
+    display: flex;
 }
 
 /* OPCIONES Y BOTONES */

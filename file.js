@@ -56,11 +56,29 @@ introTotal(intro1,intro2,intro3,intro4,intro5)
 // FIN DE INTRO
 
 //COMIENZO DE JUEGO
+     //Funciones para crear los 5 divs que tapen a Bob
+function crearDivsDeBob1() {
+    for (let i = 1; i < 4 ;i++) {
+        const divTapador = document.createElement('div')
+        divTapador.id = i
+        bobSubcont1.appendChild(divTapador)
+    }
+}
+function crearDivsDeBob2() {
+    for (let i = 4; i < 6 ;i++) {
+        const divTapador = document.createElement('div')
+        divTapador.id = i
+        bobSubcont2.appendChild(divTapador)
+    }
+}
     //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
 const bobQuejas = document.createElement('div')
 const inputDiv = document.createElement('div')
 const inputContent = document.createElement('input')
+const bobContenedor = document.createElement('div')
+const bobSubcont1 = document.createElement('div')
+const bobSubcont2 = document.createElement('div')
 
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
@@ -90,6 +108,14 @@ function borrarIntro() {
 
     contPalabra.textContent = ''
 
+    bobContenedor.classList.add('bobContenedor')
+    bobSubcont1.id = 'bobSubcont1'
+    bobSubcont2.id = 'bobSubcont2'
+    ahorcado.appendChild(bobContenedor)
+    bobContenedor.appendChild(bobSubcont1)
+    bobContenedor.appendChild(bobSubcont2)
+    crearDivsDeBob1()
+    crearDivsDeBob2()
 }
 
     //JUEGO
@@ -164,6 +190,8 @@ function finDelJuego(array){
     }
 }
 
+
+
         //Funcion de todo el juego
 function juego() {
     borrarIntro()
@@ -182,6 +210,3 @@ function comienzoDelJuego() {
 juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
-
-//CUANDO TERMINES TODAS LAS FUNCIONES JUNTALAS EN UNA UNICA FUNCION QUE SE LLAME JUEGO, Y MANEJA QUE LA 
-//VARIABLE PALABRAALEATORIA SEA GLOBAL DENTRO DE LA FUNCION JUEGO, ASI NO HAY QUE ESTAR RETORNANDOLA EN CADA SUBFUNCION
