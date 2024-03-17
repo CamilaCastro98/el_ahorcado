@@ -94,10 +94,10 @@ function borrarIntro() {
 
     //JUEGO
         //Funcion para obtener una palabra aleatoria del arreglo
+var arrayPalabra
 function getPalabraRandom() {
     var nroRandom = Math.round(Math.random()*(arrayTodasPalabras.length -1))
-    var arrayPalabra = arrayTodasPalabras[nroRandom].split('')
-    return arrayPalabra
+        arrayPalabra = arrayTodasPalabras[nroRandom].split('')
 }
 
         //Funcion (e) para luego meter dentro del evento del input
@@ -128,16 +128,16 @@ function evaluarInput() {
         //Funcion para crear la palabra oculta del ahorcado
 function getDivsDeLetra() {
     var letra
-    let palabraAleatoria = getPalabraRandom()
+    var palabraAleatoria = arrayPalabra
     for(let i = 0 ; i < palabraAleatoria.length ; i++) {
         letra = palabraAleatoria[i]
         const divLetra = document.createElement('div')
-       divLetra.classList.add('divLetra')
+        divLetra.id = letra
+        divLetra.classList.add('divLetra')
        if(palabraAleatoria[i] === palabraAleatoria[0]) {
         divLetra.classList.add('primeraLetra')
         divLetra.textContent = letra
        } else {
-        divLetra.id = letra
         divLetra.classList.add('letraOculta')
         divLetra.textContent = '-'
        }
@@ -152,17 +152,24 @@ function finDelJuego(array){
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
     } else {
-        var k = 0
+        console.log(array)
         for(let i = 0 ; i < array.length ; i++) {
-            if(array[i].id === array[i].textContent){
-                k++
+            if(array[i].textContent !== array[i].id){
+                break
+            } else if (i === array.length - 1){
+                inputContent.removeEventListener('keypress',eventoInput)
+                bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
             }
         }
-        if(k === array.length - 1) {
-            inputContent.removeEventListener('keypress',eventoInput)
-            bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
-        }
     }
+}
+
+        //Funcion de todo el juego
+function juego() {
+    borrarIntro()
+    getPalabraRandom()
+    getDivsDeLetra()
+    evaluarInput()  
 }
 
         
@@ -172,9 +179,7 @@ function finDelJuego(array){
         //SE IRA MODIFICANDO DESPUES Funcion para meter dentro del evento del boton de inicio. Borra el inicio y elige palabra
 
 function comienzoDelJuego() {
-    borrarIntro()
-    getDivsDeLetra()
-    evaluarInput()
+juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
