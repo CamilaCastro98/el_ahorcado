@@ -189,7 +189,11 @@ function getDivsDeLetra() {
         divLetra.classList.add('divLetra')
        if(palabraAleatoria[i] === palabraAleatoria[0]) {
         divLetra.classList.add('primeraLetra')
-        divLetra.textContent = letra
+            if(i===0) {
+                divLetra.textContent = letra.toUpperCase()
+            } else {
+                divLetra.textContent = letra
+            }
        } else {
         divLetra.classList.add('letraOculta')
         divLetra.textContent = '-'
@@ -208,7 +212,7 @@ function finDelJuego(array){
     } else {
         console.log(array)
         for(let i = 0 ; i < array.length ; i++) {
-            if(array[i].textContent !== array[i].id){
+            if(array[i].textContent.toLowerCase() !== array[i].id){
                 break
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
@@ -242,3 +246,7 @@ function comienzoDelJuego() {
 juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
+
+//PROBLEMAS: Si usuario adivina palabra sin equivocarse, no aparece bob feliz porque el contenedor de Bob nunca es creado
+//Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
+//Hay que hacer que cuando letra se encuentra en descarte, que no cuente de nuevo en caja de descarte ni en intento
