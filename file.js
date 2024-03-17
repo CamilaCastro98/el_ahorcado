@@ -157,7 +157,10 @@ var eventoInput = function(e){
     var contador = 0
     var allDivLetra = document.querySelectorAll('.divLetra')
     for(let i = 0 ; i < allDivLetra.length ; i++){
-        if(allDivLetra[i].id === e.key || allDivLetra[i].textContent === e.key) {
+        if(allDivLetra[i].textContent.toLowerCase() === e.key){
+            break;
+        }
+        if(allDivLetra[i].id === e.key) {
             allDivLetra[i].textContent = e.key
         } else {
             contador++
@@ -252,5 +255,5 @@ juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
-//PROBLEMAS:
+//PROBLEMAS: Si usuario selecciona una letra igual a la primera, cambia de upper a lowercase
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
