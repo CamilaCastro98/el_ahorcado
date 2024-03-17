@@ -61,6 +61,7 @@ function crearDivsDeBob1() {
     for (let i = 1; i < 4 ;i++) {
         const divTapador = document.createElement('div')
         divTapador.id = i
+        divTapador.classList.add('divTapador')
         bobSubcont1.appendChild(divTapador)
     }
 }
@@ -68,6 +69,7 @@ function crearDivsDeBob2() {
     for (let i = 4; i < 6 ;i++) {
         const divTapador = document.createElement('div')
         divTapador.id = i
+        divTapador.classList.add('divTapador')
         bobSubcont2.appendChild(divTapador)
     }
 }
@@ -77,8 +79,10 @@ const bobQuejas = document.createElement('div')
 const inputDiv = document.createElement('div')
 const inputContent = document.createElement('input')
 const bobContenedor = document.createElement('div')
+const divsBobContenedor = document.createElement('div')
 const bobSubcont1 = document.createElement('div')
 const bobSubcont2 = document.createElement('div')
+const bob = document.createElement('img')
 
 function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
@@ -109,11 +113,16 @@ function borrarIntro() {
     contPalabra.textContent = ''
 
     bobContenedor.classList.add('bobContenedor')
+    bob.id = 'bobImg'
+    bob.src = './imagenes/normal.png'
+    divsBobContenedor.classList.add('divsBobContenedor')
     bobSubcont1.id = 'bobSubcont1'
     bobSubcont2.id = 'bobSubcont2'
     ahorcado.appendChild(bobContenedor)
-    bobContenedor.appendChild(bobSubcont1)
-    bobContenedor.appendChild(bobSubcont2)
+    bobContenedor.appendChild(bob)
+    ahorcado.appendChild(divsBobContenedor)
+    divsBobContenedor.appendChild(bobSubcont1)
+    divsBobContenedor.appendChild(bobSubcont2)
     crearDivsDeBob1()
     crearDivsDeBob2()
 }

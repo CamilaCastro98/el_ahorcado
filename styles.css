@@ -17,11 +17,16 @@ html, body {
 #ahorcado {
     width:60%;
     display:flex;
-    justify-content: center;
+    background-color: blue;
+    position:relative
 }
 .laHorca {
     width: 500px;
     height:auto;
+    background-color: coral;
+    position: absolute;
+    bottom:0;
+    left:0
 }
 .letras {
     display: flex;
@@ -100,12 +105,28 @@ html, body {
     width: 20%;
 }
 
-.bobContenedor {
+.bobContenedor,.divsBobContenedor {
+    position: absolute;
+    top:26%;
+    left:33.5%
+    
+}
+#bobImg {
+    width:250px;
+    height: auto;
+}
+.divsBobContenedor {
     display: flex;
     flex-direction: column;
+    background-color: brown;
 }
 #bobSubcont1,#bobSubcont2 {
     display: flex;
+}
+.divTapador {
+    width:50px;
+    height: 20px;
+    background-color: darkmagenta;
 }
 
 /* OPCIONES Y BOTONES */
