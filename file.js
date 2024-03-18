@@ -77,6 +77,14 @@ function crearDivsDeBob2() {
         bobSubcont2.appendChild(divTapador)
     }
 }
+        //Funcion para poner todos los divs de bob o transparentes o de color
+        function divsBackground(color) {
+            const divsTapadores = document.querySelectorAll('.divTapador')
+            for(let i = 0 ; i < divsTapadores.length ; i++) {
+                divsTapadores[i].setAttribute('style','background:'+color)
+            }
+        }
+
     //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
 const bobQuejas = document.createElement('div')
@@ -111,7 +119,6 @@ function borrarIntro() {
     letrasDescartadas.insertBefore(inputContent,intro)
 
     bobQuejas.id = 'bobQuejas'
-    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
     letrasDescartadas.insertBefore(bobQuejas,inputContent)
 
     contPalabra.textContent = ''
@@ -125,8 +132,15 @@ function borrarIntro() {
     ahorcado.appendChild(divsBobContenedor)
     divsBobContenedor.appendChild(bobSubcont1)
     divsBobContenedor.appendChild(bobSubcont2)
+    reseteo()
+}
+
+        //Funcion que tiene en comun lo que hay que borrar en el inicio y lo que hay que resetear en OTRA PALABRA
+function reseteo() {
+    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
     crearDivsDeBob1()
     crearDivsDeBob2()
+    divsBackground('burlywood')
 }
 
     //JUEGO
@@ -151,6 +165,7 @@ function agregarPartesDeBob() {
         }
     }
 }
+
 
         //Funcion (e) para luego meter dentro del evento del input
 var eventoInput = function(e){
@@ -245,7 +260,7 @@ function finDelJuego(array){
                 bobContenedor.classList.remove('bobContenedor')
                 bobContenedor.classList.add('bobContenedorGanador')
                 bob.src = './imagenes/feliz.png'
-                ahorcado.removeChild(divsBobContenedor)
+                divsBackground('transparent')
             }
         }
     }
@@ -255,22 +270,45 @@ function finDelJuego(array){
 
         //Funcion de todo el juego
 function juego() {
-    borrarIntro()
     getPalabraRandom()
     getDivsDeLetra()
     evaluarInput()  
 }
 
         //Funcion de boton de otra palabra
-     
+function reinicio() {
+    console.log('entra a funcion de reinicio')
+    ahorcado.removeChild(bobContenedor)
+    bobContenedor.removeChild(bob)
+    console.log(bob.src)
+    if (bob.src.endsWith('imagenes/feliz.png')) {
+        bobContenedor.classList.add('bobContenedor')
+        bobContenedor.classList.remove('bobContenedorGanador')
+        console.log('entra al if del reinicio')
+    }
+    intentos = 0
+    contDescarte.textContent = ''
+    const divLetraRemove = document.querySelectorAll('.divLetra')
+    for(let i = 0 ; i < divLetraRemove.length ; i++) {
+        contPalabra.removeChild(divLetraRemove[i])
+    }
+    reseteo()
+
+}  
 
 
 
 
 function comienzoDelJuego() {
+borrarIntro()
+juego()
+}
+function otraPalabraJuego() {
+reinicio()
 juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
+otraPalabraBtn.addEventListener('click',otraPalabraJuego)
 
 //PROBLEMAS:
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
