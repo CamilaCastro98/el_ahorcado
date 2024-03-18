@@ -31,15 +31,25 @@ const helpBtn = document.createElement('button')
 
 function intro1() {
     presentacion1.textContent = 'Hola. Este es Bob.'
+    const tick = document.createElement('audio')
+    tick.src = './sonidos/tick.mp3'
+    tick.play()
 }
 function intro2() {
     const bobIntro = document.createElement('img')
     bobIntro.classList.add('bobIntro')
     bobIntro.src = "./imagenes/normal.png"
     imagenIntro.appendChild(bobIntro)
+
+    const bobAsustado = document.createElement('audio')
+    bobAsustado.src = './sonidos/asustado1.wav'
+    bobAsustado.play()
 }
 function intro3() {
     textoIntro.textContent = 'Bob no sabe muchas palabras, y eso lo ha metido en problemas. Necesita tu ayuda para no convertirse en ...'
+    const tick = document.createElement('audio')
+    tick.src = './sonidos/tick.mp3'
+    tick.play()
 }
 function intro4() {
     contPalabra.textContent = 'EL AHORCADO'
@@ -225,6 +235,9 @@ var eventoInput = function(e){
         }
         if(allDivLetra[i].id === e.key) {
             allDivLetra[i].textContent = e.key
+            const tick = document.createElement('audio')
+            tick.src = './sonidos/tick.mp3'
+            tick.play()
         } else {
             contador++
         }
@@ -241,10 +254,17 @@ var eventoInput = function(e){
     //Funcion para agregar a Bob desesperado cada vez que usuario se equivoca
 function bobDesesperado(){
     bob.src = './imagenes/desesperado_cuello.png'
+    const bobReaccion = document.createElement('audio')
     if(intentos < 5) {
+        bobReaccion.src = './sonidos/sorprendido.wav'
+        bobReaccion.play()
         setTimeout(()=>{
             bob.src = './imagenes/normal_cuello.png'
         },1000)
+    } else if(intentos >= 5 && intentos < 7){
+        bobReaccion.src = './sonidos/grito.mp3'
+        bobReaccion.play()
+        bobReaccion.currentTime = 0.7
     }
 }
 
@@ -287,6 +307,9 @@ function finDelJuego(array){
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
         bob.src = './imagenes/muerto_cuello.png'
+        const muerto = document.createElement('audio')
+        muerto.src = './sonidos/muerto.mp3'
+        muerto.play()
         for(let i=0 ; i< array.length ; i++) {
             if(array[i].textContent === '-') {
                 array[i].textContent = array[i].id
@@ -300,6 +323,9 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+                const trompetas = document.createElement('audio')
+                trompetas.src = './sonidos/trompetas.mp3'
+                trompetas.play()
                 if(!ahorcado.contains(bobContenedor)) {
                     ahorcado.appendChild(bobContenedor)
                     bobContenedor.appendChild(bob)
