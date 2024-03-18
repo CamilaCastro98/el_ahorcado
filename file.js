@@ -64,6 +64,10 @@ function temasBardcoreCreacion() {
 }
 
 function intro5() {
+    const slamAudio = document.createElement('audio')
+    slamAudio.src = './sonidos/slam.mp3'
+    slamAudio.currentTime = 1
+    slamAudio.play()
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
     musicaDiv.classList.add('.musicaDiv')
