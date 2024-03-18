@@ -68,6 +68,9 @@ html, body {
    width: 60%;
    height: 60%;
 }
+.musicaDiv {
+    display: flex;
+}
 
 /* JUEGO */
 
@@ -126,7 +129,7 @@ html, body {
     height: 190px;
     position: absolute;
     top:44.7%;
-    left: 32.7%
+    left: 32.7%;
 
 }
 #bobSubcont1,#bobSubcont2 {

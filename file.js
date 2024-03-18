@@ -11,6 +11,7 @@ const letrasDescartadas = document.querySelector('#introContenedor')
 
 const opciones = document.querySelector('.opciones')
 const musicaBtn = document.createElement('button')
+const musicaDiv = document.createElement('div')
 const reiniciarBtn = document.createElement('button')
 const helpBtn = document.createElement('button')
 
@@ -33,14 +34,45 @@ function intro4() {
     horca.src="./imagenes/horca.png"
     ahorcado.appendChild(horca)
 }
+
+//Funcion para crear todas las opciones de musica
+var audioActual = null
+function temasBardcoreCreacion() {
+   const menuMusica = document.createElement('div')
+   let randomTema = Math.round(Math.random()*(arrayTemas.length - 1))
+   for(let i = 0 ; i < arrayTemas.length ; i++) {
+    const temaBtn = document.createElement('button')
+    const temaAudio = document.createElement('audio')
+    temaBtn.textContent = arrayTemas[i].tema
+    temaBtn.setAttribute('data-src',arrayTemas[i].src)
+    temaAudio.src = arrayTemas[i].src
+    menuMusica.appendChild(temaBtn)
+    if(randomTema === i) {
+        audioActual = temaAudio
+        audioActual.play()
+    }
+    temaBtn.addEventListener('click',()=>{
+        if (audioActual !== null) {
+            audioActual.pause()
+            audioActual.currentTime = 0
+        }
+    audioActual = temaAudio
+    audioActual.play()
+   })
+}
+   musicaDiv.appendChild(menuMusica)
+}
+
 function intro5() {
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
+    musicaDiv.classList.add('.musicaDiv')
     reiniciarBtn.id='reiniciarBtn'
     reiniciarBtn.textContent = 'HAZLO POR BOB'
     helpBtn.id='helpBtn'
     helpBtn.textContent = '?'
-    opciones.appendChild(musicaBtn)
+    musicaDiv.appendChild(musicaBtn)
+    opciones.appendChild(musicaDiv)
     opciones.appendChild(reiniciarBtn)
     opciones.appendChild(helpBtn)
 
@@ -97,6 +129,7 @@ const bobSubcont2 = document.createElement('div')
 const bob = document.createElement('img')
 
 function borrarIntro() {
+    temasBardcoreCreacion()
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
     otraPalabraBtn.textContent = 'OTRA PALABRA'
@@ -119,6 +152,7 @@ function borrarIntro() {
     letrasDescartadas.insertBefore(inputContent,intro)
 
     bobQuejas.id = 'bobQuejas'
+    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
     letrasDescartadas.insertBefore(bobQuejas,inputContent)
 
     contPalabra.textContent = ''
@@ -132,12 +166,6 @@ function borrarIntro() {
     ahorcado.appendChild(divsBobContenedor)
     divsBobContenedor.appendChild(bobSubcont1)
     divsBobContenedor.appendChild(bobSubcont2)
-    reseteo()
-}
-
-        //Funcion que tiene en comun lo que hay que borrar en el inicio y lo que hay que resetear en OTRA PALABRA
-function reseteo() {
-    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
     crearDivsDeBob1()
     crearDivsDeBob2()
     divsBackground('burlywood')
@@ -277,14 +305,11 @@ function juego() {
 
         //Funcion de boton de otra palabra
 function reinicio() {
-    console.log('entra a funcion de reinicio')
     ahorcado.removeChild(bobContenedor)
     bobContenedor.removeChild(bob)
-    console.log(bob.src)
     if (bob.src.endsWith('imagenes/feliz.png')) {
         bobContenedor.classList.add('bobContenedor')
         bobContenedor.classList.remove('bobContenedorGanador')
-        console.log('entra al if del reinicio')
     }
     intentos = 0
     contDescarte.textContent = ''
@@ -292,8 +317,8 @@ function reinicio() {
     for(let i = 0 ; i < divLetraRemove.length ; i++) {
         contPalabra.removeChild(divLetraRemove[i])
     }
-    reseteo()
-
+    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+    divsBackground('burlywood')
 }  
 
 
@@ -311,5 +336,5 @@ reiniciarBtn.addEventListener('click',comienzoDelJuego)
 otraPalabraBtn.addEventListener('click',otraPalabraJuego)
 
 //PROBLEMAS:
-//Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
+
 
