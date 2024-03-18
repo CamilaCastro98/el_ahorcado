@@ -1,3 +1,18 @@
+//Funcion del primer boton start
+const opciones = document.querySelector('.opciones')
+function botonStart() {
+    const startBtn = document.createElement('button')
+    startBtn.id = 'startBtn'
+    startBtn.textContent = 'COMENZAR'
+    opciones.appendChild(startBtn)
+    startBtn.addEventListener('click',()=> {
+        opciones.removeChild(startBtn)
+        start()
+    })
+}
+
+//Funcion para que todo empiece con el primer boton
+function start() {
 // COMIENZO DE INTRO
 
 const presentacion1 = document.querySelector('#presentacion1')
@@ -9,7 +24,6 @@ const ahorcado = document.querySelector('#ahorcado')
 const intro = document.querySelector('.intro')
 const letrasDescartadas = document.querySelector('#introContenedor')
 
-const opciones = document.querySelector('.opciones')
 const musicaBtn = document.createElement('button')
 const musicaDiv = document.createElement('div')
 const reiniciarBtn = document.createElement('button')
@@ -33,6 +47,11 @@ function intro4() {
     horca.classList.add('laHorca')
     horca.src="./imagenes/horca.png"
     ahorcado.appendChild(horca)
+
+    const slamAudio = document.createElement('audio')
+    slamAudio.src = './sonidos/slam.mp3'
+    slamAudio.currentTime = 1.3
+    slamAudio.play()
 }
 
 //Funcion para crear todas las opciones de musica
@@ -64,10 +83,6 @@ function temasBardcoreCreacion() {
 }
 
 function intro5() {
-    const slamAudio = document.createElement('audio')
-    slamAudio.src = './sonidos/slam.mp3'
-    slamAudio.currentTime = 1
-    slamAudio.play()
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
     musicaDiv.classList.add('.musicaDiv')
@@ -338,6 +353,8 @@ juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 otraPalabraBtn.addEventListener('click',otraPalabraJuego)
+}
+botonStart()
 
 //PROBLEMAS:
 
