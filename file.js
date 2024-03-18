@@ -171,9 +171,19 @@ var eventoInput = function(e){
         intentos ++
         contDescarte.textContent += e.key + ' '
         agregarPartesDeBob()
-        //Creo que aca iria para poner a bob desesperado por unos segundos
+        bobDesesperado()
     }
     finDelJuego(allDivLetra)}
+}
+
+    //Funcion para agregar a Bob desesperado cada vez que usuario se equivoca
+function bobDesesperado(){
+    bob.src = './imagenes/desesperado_cuello.png'
+    if(intentos < 5) {
+        setTimeout(()=>{
+            bob.src = './imagenes/normal_cuello.png'
+        },1000)
+    }
 }
 
     //Funcion para agregar al input un evento que evalue si la tecla presionada es la letra oculta
@@ -264,4 +274,4 @@ reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
 //PROBLEMAS:
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
-//Poner a bob desesperado cada vez que usuario no acierte y dejalo hasta el final cuando intentos llegan a 5
+
