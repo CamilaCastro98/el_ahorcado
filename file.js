@@ -215,6 +215,11 @@ function finDelJuego(array){
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
         bob.src = './imagenes/muerto_cuello.png'
+        for(let i=0 ; i< array.length ; i++) {
+            if(array[i].textContent === '-') {
+                array[i].textContent = array[i].id
+            }
+        }
     } else {
         console.log(array)
         for(let i = 0 ; i < array.length ; i++) {
@@ -246,11 +251,11 @@ function juego() {
     evaluarInput()  
 }
 
-        
+        //Funcion de boton de otra palabra
+     
 
 
 
-        //SE IRA MODIFICANDO DESPUES Funcion para meter dentro del evento del boton de inicio. Borra el inicio y elige palabra
 
 function comienzoDelJuego() {
 juego()
@@ -259,4 +264,4 @@ reiniciarBtn.addEventListener('click',comienzoDelJuego)
 
 //PROBLEMAS:
 //Hay que hacer funcion de otra palabra y estar atenta a que cosas hay que resetear y cuales ya estan creadas globalmente
-//Filtrar cuando el input es otra cosa que letras en minuscula
+//Poner a bob desesperado cada vez que usuario no acierte y dejalo hasta el final cuando intentos llegan a 5
