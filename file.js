@@ -52,7 +52,8 @@ function temasBardcoreCreacion() {
     audioActual.play()
    })
 }
-   body.appendChild(menuMusica)
+   const juegoDiv = document.querySelector('#juego')
+   juegoDiv.appendChild(menuMusica)
 }
 
 const presentacion1 = document.querySelector('#presentacion1')
@@ -173,7 +174,7 @@ const perdidas = document.createElement('div')
 
 
 function borrarIntro() {
-    musicaDiv.classList.add('.musicaDiv')
+    musicaDiv.classList.add('musicaDiv')
     opciones.appendChild(musicaDiv)
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'

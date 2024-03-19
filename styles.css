@@ -8,6 +8,7 @@ html, body {
     flex-direction: column;
     height:100%;
     background-color:burlywood;
+    position: relative;
 }
 
 .progresoDelJuego {
@@ -68,24 +69,9 @@ html, body {
    width: 60%;
    height: 60%;
 }
-.musicaDiv {
-    display: flex;
-}
-.menuMusica {
-    background-color: aqua;
-}
 
 /* JUEGO */
 
-.contadorContenedor {
-    display: flex;
-    background-color: antiquewhite;
-}
-.contadorContenedores {
-    display: flex;
-    flex-direction: column;
-    border: 5px solid black;
-}
 
 #letrasDescartadas {
     display: flex;
@@ -165,13 +151,34 @@ html, body {
 
 .opciones {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 20%;
 }
 #reiniciarBtn,#otraPalabraBtn {
     width: 45%;
     height: 70%;
     font-size: 70px;
+}
+.contadorContenedor {
+    display: flex;
+    background-color: antiquewhite;
+}
+.contadorContenedores {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+.musicaDiv {
+    display: flex;
+    width:20%
+}
+.menuMusica {
+    display: flex;
+    flex-wrap: wrap;
+    width:50px;
+    position: absolute;
+    top:60%;
+    left:30%;
+    z-index: 2;
 }
 
