@@ -2,6 +2,32 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: "IM Fell English SC", serif;
+}
+button {
+    font-family: "IM Fell English SC", serif;
+    border-radius: 30px;
+}
+#startBtn {
+    width:40%;
+    height: 80%;
+    margin-bottom: 5%;
+    font-size: 80px;
+    font-weight: bolder;
+    color:rgb(178, 141, 95);
+    -webkit-text-stroke: 1px rgb(48, 31, 10);
+    border: 10px solid rgb(48, 31, 10);
+    background-image: url('./imagenes/madera2.jpeg');
+    background-size: cover;
+    border-radius: 30px;
+    transition: transform 0.5s ease;
+}
+#startBtn:hover {
+    background-image: url('./imagenes/madera.jpeg');
+    background-size: cover;
+    color:rgb(48, 31, 10);
+    -webkit-text-stroke: 0px;
+    transform: scale(1.1)
 }
 #juego {
     display: flex;
@@ -44,7 +70,9 @@ html, body {
 }
 #presentacion1,#pTexto {
     font-size: 35px;
+    font-family: "IM Fell English SC", serif;
     padding-left: 70px;
+    color: rgb(48, 31, 10);
 }
 #presentacion2{
     display: flex;
@@ -62,6 +90,7 @@ html, body {
 }
 #pTexto {
     padding: 50px;
+    padding-top: 65px;
 }
 
 .bobIntro {
@@ -78,16 +107,21 @@ html, body {
     height: 100%;
     padding-left: 30%;
     padding-top: 10%;
+    align-items: center;
+    gap:15px
 }
 .contDescarte {
-    background-color: aliceblue;
+    background-color: rgb(203, 199, 183);
     box-sizing: border-box;
     width: 50%;
-    height: 150px;
-    border: 15px solid black;
+    height: 85%;
+    border: 5px solid rgb(90, 23, 23);
+    border-radius: 10px;
     font-size: 70px;
     text-align: center;
-    padding:30px;
+    padding:10px;
+    align-items: center;
+    justify-content: center;
 }
 
 #palabra {
@@ -98,13 +132,24 @@ html, body {
     height: 100%;
 }
 #contPalabra {
-    font-size: 120px;
+    font-size: 113px;
     display: flex;
+    font-family: "IM Fell English SC", serif;
+    gap:5px
 }
 #bobQuejas {
-    width: 20%;
+    width: 50%;
+    font-size: 35px;
 }
-
+#input {
+    width: 10%;
+    height: 30%;
+    font-size: 60px;
+    font-family: "IM Fell English SC", serif;
+    border: 5px solid black;
+    border-radius: 5px;
+    background-color: antiquewhite;
+}
 .bobContenedor{
     position: absolute;
     top:26%;
@@ -153,21 +198,61 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20%;
 }
 #reiniciarBtn,#otraPalabraBtn {
-    width: 45%;
-    height: 70%;
+    padding: 10px;
     font-size: 70px;
+    font-weight:900;
+}
+#reiniciarBtn {
+    transition: transform 0.3s ease;
+    color: rgb(11, 11, 10);
+    background-image: url(./imagenes/piedras3.avif);
+    background-size: cover;
+    border: 10px solid rgb(3, 3, 3);
+}
+#reiniciarBtn:hover {
+    transform: scale(1.1);
+    color:  rgb(232, 210, 182);
+    border:10px solid rgb(232, 210, 182);
+}
+#otraPalabraBtn {
+    background-image: url(./imagenes/piedras4.png);
+    color: rgb(34, 26, 13);
+    border: 10px solid rgb(34, 26, 13);
+    transition: transform 0.2s ease;
+}
+#otraPalabraBtn:hover {
+    transform: scale(1.05);
+
 }
 .contadorContenedor {
     display: flex;
-    background-color: antiquewhite;
-}
-.contadorContenedores {
-    display: flex;
-    flex-direction: column;
+    background-color: bisque;
+    height: 60%;
+    margin-left: 15%;
     border: 5px solid black;
+    border-radius: 2px;
+    align-items: center;
 }
+#ganadasContenedor,#perdidasContenedor {
+    font-size: 80px;
+    height: 100%;
+    width: 80px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#ganadasContenedor {
+    border-right: 5px solid black;
+    color: green
+}
+#perdidasContenedor {
+    color: brown
+}
+
 .musicaDiv {
     display: flex;
     width:20%;
@@ -180,7 +265,35 @@ html, body {
     justify-content: center;
     padding-bottom: 3%;
     position: absolute;
-    top:75%;
-    left:9%;
+    top:74%;
+    left:2%;
+}
+.musicaBtn {
+    background-color: bisque;
+    border-radius: 200px;
+    font-size: 30px;
+    padding: 10px;
+    border: 5px solid rgb(34, 26, 13);
+    color: 5px solid rgb(34, 26, 13);
+    transition: transform 0.2s ease;
+}
+.tema {
+    font-size:15px;
+    background-color: rgb(246, 198, 140);
+}
+.tema:hover {
+    background-color: black;
+    color:rgb(246, 198, 140);
+}
+.musicaBtn:hover {
+    transform: scale(1.05);
+}
+#apagado {
+    background-color: black;
+    color:bisque;
+    transition: transform 0.2s ease;
+}
+#apagado:hover {
+    transform: scale(1.05);
 }
 

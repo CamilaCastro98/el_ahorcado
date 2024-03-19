@@ -50,6 +50,7 @@ function temasBardcoreCreacion() {
     audioActual = temaAudio
     audioActual.loop = true
     audioActual.play()
+    musicaBtn.id = ''
    })
 }
    const juegoDiv = document.querySelector('#juego')
@@ -81,7 +82,7 @@ function intro2() {
     reproducir('./sonidos/asustado1.wav',0,1.0)
 }
 function intro3() {
-    textoIntro.textContent = 'Bob no sabe muchas palabras, y eso lo ha metido en problemas. Necesita tu ayuda para no convertirse en ...'
+    textoIntro.textContent = 'Bob no sabe muchas palabras, y eso lo ha metido en problemas. Ayudalo para que no sea ...'
     reproducir('./sonidos/tick.mp3',0,1.0)
 }
 function intro4() {
@@ -144,8 +145,10 @@ function eventosMusicaBtn() {
         if (audioActual.paused) {
             audioActual.currentTime = 0
             audioActual.play()
+            musicaBtn.id = ''
         } else {
             audioActual.pause()
+            musicaBtn.id = 'apagado'
         }
     })
     musicaBtn.addEventListener('mouseover',()=>{
@@ -190,7 +193,7 @@ const perdidas = document.createElement('div')
 function borrarIntro() {
     musicaDiv.classList.add('musicaDiv')
     opciones.appendChild(musicaDiv)
-    musicaBtn.id = 'musicaBtn'
+    musicaBtn.classList.add('musicaBtn')
     musicaBtn.textContent = 'MUSICA'
     musicaDiv.appendChild(musicaBtn)
     temasBardcoreCreacion()
@@ -235,9 +238,10 @@ function borrarIntro() {
     inputContent.maxLength = '1'
     letrasDescartadas.appendChild(inputDiv)
     letrasDescartadas.insertBefore(inputContent,intro)
+    letrasDescartadas.setAttribute('style','padding-left:0px')
 
     bobQuejas.id = 'bobQuejas'
-    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+    bobQuejas.textContent = 'Que letra va en esta palabra? Que es una letra...? NO QUIERO MORIR! AYUDA!'
     letrasDescartadas.insertBefore(bobQuejas,inputContent)
 
     contPalabra.textContent = ''
@@ -351,7 +355,7 @@ function getDivsDeLetra() {
             }
        } else {
         divLetra.classList.add('letraOculta')
-        divLetra.textContent = '-'
+        divLetra.textContent = '_'
        }
        contPalabra.appendChild(divLetra)
     }
@@ -363,13 +367,14 @@ function getDivsDeLetra() {
 function finDelJuego(array){
     if(intentos === 7) {
         inputContent.removeEventListener('keypress',eventoInput)
-        bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
+        bobQuejas.textContent = 'Bueno... perdiste! Pero si te sirve de consuelo, yo perdi mas...'
         perdidas.textContent ++
         bob.src = './imagenes/muerto_cuello.png'
         reproducir('./sonidos/muerto.mp3',0,1.0)
         for(let i=0 ; i< array.length ; i++) {
-            if(array[i].textContent === '-') {
+            if(array[i].textContent === '_') {
                 array[i].textContent = array[i].id
+                array[i].setAttribute('style','color:brown')
             }
         }
     } else {
@@ -378,7 +383,7 @@ function finDelJuego(array){
                 break
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
-                bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+                bobQuejas.textContent = 'Ganaste! Soy libre! prometo ponerme a estudiar palabras... mañana...'
                 ganadas.textContent ++
                 reproducir('./sonidos/trompetas.mp3',0,1.5)
                 if(!ahorcado.contains(bobContenedor)) {
@@ -417,7 +422,7 @@ function reinicio() {
     for(let i = 0 ; i < divLetraRemove.length ; i++) {
         contPalabra.removeChild(divLetraRemove[i])
     }
-    bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+    bobQuejas.textContent = 'Que letra va en esta palabra? Que es una letra...? NO QUIERO MORIR! AYUDA!'
     divsBackground('burlywood')
 }  
 
@@ -431,10 +436,10 @@ juego()
 function otraPalabraJuego() {
     var allDivLetra = document.querySelectorAll('.divLetra')
     for(let i=0 ; i < allDivLetra.length ; i++) {
-        if (allDivLetra[i].textContent === '-') {
-            bobQuejas.textContent = 'Estas intentando pasar? No puedes! No seas asi'
+        if (allDivLetra[i].textContent === '_') {
+            bobQuejas.textContent = 'No puedes pasar! SIGO COLGANDO... hola??'
             setTimeout(()=>{
-                bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+                bobQuejas.textContent = 'Que letra va en esta palabra? Que es una letra...? NO QUIERO MORIR! AYUDA!'
             },2000)
             return 'No se puede pasar'
         }
