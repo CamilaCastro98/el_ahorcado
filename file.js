@@ -16,10 +16,11 @@ function start() {
 
 // COMIENZO DE INTRO
         //Funcion para reproducir sonidos
-function reproducir(a,currentTime) {
+function reproducir(a,currentTime,playrate) {
     const audio = document.createElement('audio')
     audio.src = a
     audio.currentTime = currentTime
+    audio.playbackRate = playrate
     audio.play()
 }
         //Funcion para crear todas las opciones de musica
@@ -68,18 +69,18 @@ const helpBtn = document.createElement('button')
 
 function intro1() {
     presentacion1.textContent = 'Hola. Este es Bob.'
-    reproducir('./sonidos/tick.mp3',0)
+    reproducir('./sonidos/tick.mp3',0,1.0)
 }
 function intro2() {
     const bobIntro = document.createElement('img')
     bobIntro.classList.add('bobIntro')
     bobIntro.src = "./imagenes/normal.png"
     imagenIntro.appendChild(bobIntro)
-    reproducir('./sonidos/asustado1.wav',0)
+    reproducir('./sonidos/asustado1.wav',0,1.0)
 }
 function intro3() {
     textoIntro.textContent = 'Bob no sabe muchas palabras, y eso lo ha metido en problemas. Necesita tu ayuda para no convertirse en ...'
-    reproducir('./sonidos/tick.mp3',0)
+    reproducir('./sonidos/tick.mp3',0,1.0)
 }
 function intro4() {
     contPalabra.textContent = 'EL AHORCADO'
@@ -87,7 +88,7 @@ function intro4() {
     horca.classList.add('laHorca')
     horca.src="./imagenes/horca.png"
     ahorcado.appendChild(horca)
-    reproducir('./sonidos/slam.mp3',1.3)
+    reproducir('./sonidos/slam.mp3',1.3,1.0)
 }
 
 function intro5() {
@@ -253,7 +254,7 @@ var eventoInput = function(e){
         }
         if(allDivLetra[i].id === e.key) {
             allDivLetra[i].textContent = e.key
-            reproducir('./sonidos/tick.mp3',0)
+            reproducir('./sonidos/tick.mp3',0,1.0)
         } else {
             contador++
         }
@@ -271,12 +272,12 @@ var eventoInput = function(e){
 function bobDesesperado(){
     bob.src = './imagenes/desesperado_cuello.png'
     if(intentos < 5) {
-        reproducir('./sonidos/sorprendido.wav',0)
+        reproducir('./sonidos/sorprendido.wav',0,1.0)
         setTimeout(()=>{
             bob.src = './imagenes/normal_cuello.png'
         },1000)
     } else if(intentos >= 5 && intentos < 7){
-        reproducir('./sonidos/grito.mp3',0.7)
+        reproducir('./sonidos/grito.mp3',0.7,1.0)
     }
 }
 
@@ -319,7 +320,7 @@ function finDelJuego(array){
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
         bob.src = './imagenes/muerto_cuello.png'
-        reproducir('./sonidos/muerto.mp3',0)
+        reproducir('./sonidos/muerto.mp3',0,1.0)
         for(let i=0 ; i< array.length ; i++) {
             if(array[i].textContent === '-') {
                 array[i].textContent = array[i].id
@@ -332,7 +333,7 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
-                reproducir('./sonidos/trompetas.mp3',0)
+                reproducir('./sonidos/trompetas.mp3',0,1.5)
                 if(!ahorcado.contains(bobContenedor)) {
                     ahorcado.appendChild(bobContenedor)
                     bobContenedor.appendChild(bob)
@@ -404,6 +405,5 @@ botonStart()
 //Cambiar color de letras, rojo para cuando perdes, verde para las que si son
 //Poner todo mas lindo
 //Poner funcion que vaya diciendo cuantas palabras hiciste bien y cuantas mal
-//Poner funcion para apagar musica
 //Cuando no queden palabras, se termina el juego
 
