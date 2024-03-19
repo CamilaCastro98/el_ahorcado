@@ -44,7 +44,7 @@ button {
 #ahorcado {
     width:60%;
     display:flex;
-    position:relative
+    position:relative;
 }
 .laHorca {
     width: 500px;
@@ -111,7 +111,8 @@ button {
     gap:15px
 }
 .contDescarte {
-    background-color: rgb(203, 199, 183);
+    background-image: url(./imagenes/pared1.jpeg);
+    background-size:contain;
     box-sizing: border-box;
     width: 50%;
     height: 85%;
@@ -214,8 +215,8 @@ button {
 }
 #reiniciarBtn:hover {
     transform: scale(1.1);
-    color:  rgb(232, 210, 182);
-    border:10px solid rgb(232, 210, 182);
+    color: bisque;
+    border:10px solid bisque
 }
 #otraPalabraBtn {
     background-image: url(./imagenes/piedras4.png);

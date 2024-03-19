@@ -453,8 +453,5 @@ otraPalabraBtn.addEventListener('click',otraPalabraJuego)
 botonStart()
 
 //QUE FALTA
-//Pensar mejor mensajitos de bob
-//Cambiar color de letras, rojo para cuando perdes, verde para las que si son
-//Poner todo mas lindo
-//Cuando no queden palabras, se termina el juego
+
 
