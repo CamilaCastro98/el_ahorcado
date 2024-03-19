@@ -139,6 +139,18 @@ function crearDivsDeBob2() {
                 divsTapadores[i].setAttribute('style','background:'+color)
             }
         }
+    //Funcion para los eventos del boton de musica
+function eventosMusicaBtn() {
+    musicaBtn.addEventListener('click',()=> {
+        if (audioActual.paused) {
+            audioActual.currentTime = 0
+            audioActual.play()
+        } else {
+            audioActual.pause()
+        }
+    })
+}
+
 
     //Funcion para borrar intro
 const otraPalabraBtn = document.createElement('button')
@@ -154,6 +166,7 @@ const bob = document.createElement('img')
 function borrarIntro() {
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
+    eventosMusicaBtn()
     musicaDiv.appendChild(musicaBtn)
     temasBardcoreCreacion()
     opciones.removeChild(reiniciarBtn)
