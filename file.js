@@ -75,6 +75,7 @@ function temasBardcoreCreacion() {
     menuMusica.appendChild(temaBtn)
     if(randomTema === i) {
         audioActual = temaAudio
+        audioActual.loop = true
         audioActual.play()
     }
     temaBtn.addEventListener('click',()=>{
@@ -83,6 +84,7 @@ function temasBardcoreCreacion() {
             audioActual.currentTime = 0
         }
     audioActual = temaAudio
+    audioActual.loop = true
     audioActual.play()
    })
 }
