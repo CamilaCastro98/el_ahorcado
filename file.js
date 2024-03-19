@@ -22,6 +22,35 @@ function reproducir(a,currentTime) {
     audio.currentTime = currentTime
     audio.play()
 }
+        //Funcion para crear todas las opciones de musica
+var audioActual = null
+function temasBardcoreCreacion() {
+   const menuMusica = document.createElement('div')
+   let randomTema = Math.round(Math.random()*(arrayTemas.length - 1))
+   for(let i = 0 ; i < arrayTemas.length ; i++) {
+    const temaBtn = document.createElement('button')
+    const temaAudio = document.createElement('audio')
+    temaBtn.textContent = arrayTemas[i].tema
+    temaBtn.setAttribute('data-src',arrayTemas[i].src)
+    temaAudio.src = arrayTemas[i].src
+    menuMusica.appendChild(temaBtn)
+    if(randomTema === i) {
+        audioActual = temaAudio
+        audioActual.loop = true
+        audioActual.play()
+    }
+    temaBtn.addEventListener('click',()=>{
+        if (audioActual !== null) {
+            audioActual.pause()
+            audioActual.currentTime = 0
+        }
+    audioActual = temaAudio
+    audioActual.loop = true
+    audioActual.play()
+   })
+}
+   musicaDiv.appendChild(menuMusica)
+}
 
 const presentacion1 = document.querySelector('#presentacion1')
 const presentacion2 = document.querySelector('#presentacion2')
@@ -61,49 +90,15 @@ function intro4() {
     reproducir('./sonidos/slam.mp3',1.3)
 }
 
-//Funcion para crear todas las opciones de musica
-var audioActual = null
-function temasBardcoreCreacion() {
-   const menuMusica = document.createElement('div')
-   let randomTema = Math.round(Math.random()*(arrayTemas.length - 1))
-   for(let i = 0 ; i < arrayTemas.length ; i++) {
-    const temaBtn = document.createElement('button')
-    const temaAudio = document.createElement('audio')
-    temaBtn.textContent = arrayTemas[i].tema
-    temaBtn.setAttribute('data-src',arrayTemas[i].src)
-    temaAudio.src = arrayTemas[i].src
-    menuMusica.appendChild(temaBtn)
-    if(randomTema === i) {
-        audioActual = temaAudio
-        audioActual.loop = true
-        audioActual.play()
-    }
-    temaBtn.addEventListener('click',()=>{
-        if (audioActual !== null) {
-            audioActual.pause()
-            audioActual.currentTime = 0
-        }
-    audioActual = temaAudio
-    audioActual.loop = true
-    audioActual.play()
-   })
-}
-   musicaDiv.appendChild(menuMusica)
-}
-
 function intro5() {
-    musicaBtn.id = 'musicaBtn'
-    musicaBtn.textContent = 'MUSICA'
     musicaDiv.classList.add('.musicaDiv')
+    opciones.appendChild(musicaDiv)
     reiniciarBtn.id='reiniciarBtn'
     reiniciarBtn.textContent = 'HAZLO POR BOB'
     helpBtn.id='helpBtn'
     helpBtn.textContent = '?'
-    musicaDiv.appendChild(musicaBtn)
-    opciones.appendChild(musicaDiv)
     opciones.appendChild(reiniciarBtn)
     opciones.appendChild(helpBtn)
-
 }
 function introTotal(cb1,cb2,cb3,cb4,cb5) {
     setTimeout(cb1,2000)
@@ -137,7 +132,7 @@ function crearDivsDeBob2() {
         bobSubcont2.appendChild(divTapador)
     }
 }
-        //Funcion para poner todos los divs de bob o transparentes o de color
+     //Funcion para poner todos los divs de bob o transparentes o de color
         function divsBackground(color) {
             const divsTapadores = document.querySelectorAll('.divTapador')
             for(let i = 0 ; i < divsTapadores.length ; i++) {
@@ -157,6 +152,9 @@ const bobSubcont2 = document.createElement('div')
 const bob = document.createElement('img')
 
 function borrarIntro() {
+    musicaBtn.id = 'musicaBtn'
+    musicaBtn.textContent = 'MUSICA'
+    musicaDiv.appendChild(musicaBtn)
     temasBardcoreCreacion()
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
