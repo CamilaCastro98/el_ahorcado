@@ -200,9 +200,17 @@ function borrarIntro() {
     //JUEGO
         //Funcion para obtener una palabra aleatoria del arreglo
 var arrayPalabra
+var palabrasUsadas = []
 function getPalabraRandom() {
     var nroRandom = Math.round(Math.random()*(arrayTodasPalabras.length -1))
-        arrayPalabra = arrayTodasPalabras[nroRandom].split('')
+    var palabra = arrayTodasPalabras[nroRandom]
+        if(palabrasUsadas.includes(palabra)) {
+            getPalabraRandom()
+        } else {
+            arrayPalabra = palabra.split('')
+            palabrasUsadas.push(palabra)
+        }
+        console.log(palabrasUsadas)
 }
 
         //Funcion para ir agregando partes de bob
@@ -384,6 +392,5 @@ botonStart()
 //Poner todo mas lindo
 //Poner funcion que vaya diciendo cuantas palabras hiciste bien y cuantas mal
 //Poner funcion para apagar musica
-//Que no se repitan palabras
-
+//Cuando no queden palabras, se termina el juego
 
