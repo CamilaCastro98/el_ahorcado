@@ -148,6 +148,20 @@ function eventosMusicaBtn() {
             audioActual.pause()
         }
     })
+    musicaBtn.addEventListener('mouseover',()=>{
+        const menuMusica = document.querySelector('.menuMusica')
+        menuMusica.style.display = 'flex'
+        menuMusica.addEventListener('mouseover',()=>{
+            menuMusica.style.display = 'flex'
+            menuMusica.addEventListener('mouseleave',()=>{
+                menuMusica.style.display = 'none'
+            })
+        })
+    })
+    musicaBtn.addEventListener('mouseleave',()=>{
+        const menuMusica = document.querySelector('.menuMusica')
+        menuMusica.style.display = 'none'
+    })
 }
 
 
@@ -178,9 +192,9 @@ function borrarIntro() {
     opciones.appendChild(musicaDiv)
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
-    eventosMusicaBtn()
     musicaDiv.appendChild(musicaBtn)
     temasBardcoreCreacion()
+    eventosMusicaBtn()
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
     otraPalabraBtn.textContent = 'OTRA PALABRA'
