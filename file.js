@@ -13,7 +13,15 @@ function botonStart() {
 
 //Funcion para que todo empiece con el primer boton
 function start() {
+
 // COMIENZO DE INTRO
+        //Funcion para reproducir sonidos
+function reproducir(a,currentTime) {
+    const audio = document.createElement('audio')
+    audio.src = a
+    audio.currentTime = currentTime
+    audio.play()
+}
 
 const presentacion1 = document.querySelector('#presentacion1')
 const presentacion2 = document.querySelector('#presentacion2')
@@ -31,25 +39,18 @@ const helpBtn = document.createElement('button')
 
 function intro1() {
     presentacion1.textContent = 'Hola. Este es Bob.'
-    const tick = document.createElement('audio')
-    tick.src = './sonidos/tick.mp3'
-    tick.play()
+    reproducir('./sonidos/tick.mp3',0)
 }
 function intro2() {
     const bobIntro = document.createElement('img')
     bobIntro.classList.add('bobIntro')
     bobIntro.src = "./imagenes/normal.png"
     imagenIntro.appendChild(bobIntro)
-
-    const bobAsustado = document.createElement('audio')
-    bobAsustado.src = './sonidos/asustado1.wav'
-    bobAsustado.play()
+    reproducir('./sonidos/asustado1.wav',0)
 }
 function intro3() {
     textoIntro.textContent = 'Bob no sabe muchas palabras, y eso lo ha metido en problemas. Necesita tu ayuda para no convertirse en ...'
-    const tick = document.createElement('audio')
-    tick.src = './sonidos/tick.mp3'
-    tick.play()
+    reproducir('./sonidos/tick.mp3',0)
 }
 function intro4() {
     contPalabra.textContent = 'EL AHORCADO'
@@ -57,11 +58,7 @@ function intro4() {
     horca.classList.add('laHorca')
     horca.src="./imagenes/horca.png"
     ahorcado.appendChild(horca)
-
-    const slamAudio = document.createElement('audio')
-    slamAudio.src = './sonidos/slam.mp3'
-    slamAudio.currentTime = 1.3
-    slamAudio.play()
+    reproducir('./sonidos/slam.mp3',1.3)
 }
 
 //Funcion para crear todas las opciones de musica
@@ -235,9 +232,7 @@ var eventoInput = function(e){
         }
         if(allDivLetra[i].id === e.key) {
             allDivLetra[i].textContent = e.key
-            const tick = document.createElement('audio')
-            tick.src = './sonidos/tick.mp3'
-            tick.play()
+            reproducir('./sonidos/tick.mp3',0)
         } else {
             contador++
         }
@@ -254,17 +249,13 @@ var eventoInput = function(e){
     //Funcion para agregar a Bob desesperado cada vez que usuario se equivoca
 function bobDesesperado(){
     bob.src = './imagenes/desesperado_cuello.png'
-    const bobReaccion = document.createElement('audio')
     if(intentos < 5) {
-        bobReaccion.src = './sonidos/sorprendido.wav'
-        bobReaccion.play()
+        reproducir('./sonidos/sorprendido.wav',0)
         setTimeout(()=>{
             bob.src = './imagenes/normal_cuello.png'
         },1000)
     } else if(intentos >= 5 && intentos < 7){
-        bobReaccion.src = './sonidos/grito.mp3'
-        bobReaccion.play()
-        bobReaccion.currentTime = 0.7
+        reproducir('./sonidos/grito.mp3',0.7)
     }
 }
 
@@ -307,9 +298,7 @@ function finDelJuego(array){
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
         bob.src = './imagenes/muerto_cuello.png'
-        const muerto = document.createElement('audio')
-        muerto.src = './sonidos/muerto.mp3'
-        muerto.play()
+        reproducir('./sonidos/muerto.mp3',0)
         for(let i=0 ; i< array.length ; i++) {
             if(array[i].textContent === '-') {
                 array[i].textContent = array[i].id
@@ -323,9 +312,7 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
-                const trompetas = document.createElement('audio')
-                trompetas.src = './sonidos/trompetas.mp3'
-                trompetas.play()
+                reproducir('./sonidos/trompetas.mp3',0)
                 if(!ahorcado.contains(bobContenedor)) {
                     ahorcado.appendChild(bobContenedor)
                     bobContenedor.appendChild(bob)
@@ -382,6 +369,6 @@ otraPalabraBtn.addEventListener('click',otraPalabraJuego)
 }
 botonStart()
 
-//PROBLEMAS:
+//QUE FALTA
 
 
