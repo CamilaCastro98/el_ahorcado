@@ -305,7 +305,6 @@ function finDelJuego(array){
             }
         }
     } else {
-        console.log(array)
         for(let i = 0 ; i < array.length ; i++) {
             if(array[i].textContent.toLowerCase() !== array[i].id){
                 break
@@ -361,8 +360,18 @@ borrarIntro()
 juego()
 }
 function otraPalabraJuego() {
-reinicio()
-juego()
+    var allDivLetra = document.querySelectorAll('.divLetra')
+    for(let i=0 ; i < allDivLetra.length ; i++) {
+        if (allDivLetra[i].textContent === '-') {
+            bobQuejas.textContent = 'Estas intentando pasar? No puedes! No seas asi'
+            setTimeout(()=>{
+                bobQuejas.textContent = 'Vamos, piensa una letra que pueda existir en la palabra misteriosa. PENSALO BIEN NO QUIERO MORIR'
+            },2000)
+            return 'No se puede pasar'
+        }
+    }
+    reinicio()
+    juego()
 }
 reiniciarBtn.addEventListener('click',comienzoDelJuego)
 otraPalabraBtn.addEventListener('click',otraPalabraJuego)
@@ -370,5 +379,11 @@ otraPalabraBtn.addEventListener('click',otraPalabraJuego)
 botonStart()
 
 //QUE FALTA
+//Pensar mejor mensajitos de bob
+//Cambiar color de letras, rojo para cuando perdes, verde para las que si son
+//Poner todo mas lindo
+//Poner funcion que vaya diciendo cuantas palabras hiciste bien y cuantas mal
+//Poner funcion para apagar musica
+//Que no se repitan palabras
 
 
