@@ -27,11 +27,13 @@ function reproducir(a,currentTime,playrate) {
 var audioActual = null
 function temasBardcoreCreacion() {
    const menuMusica = document.createElement('div')
+   menuMusica.classList.add('menuMusica')
    let randomTema = Math.round(Math.random()*(arrayTemas.length - 1))
    for(let i = 0 ; i < arrayTemas.length ; i++) {
     const temaBtn = document.createElement('button')
     const temaAudio = document.createElement('audio')
     temaBtn.textContent = arrayTemas[i].tema
+    temaBtn.classList.add('tema')
     temaBtn.setAttribute('data-src',arrayTemas[i].src)
     temaAudio.src = arrayTemas[i].src
     menuMusica.appendChild(temaBtn)
@@ -50,7 +52,7 @@ function temasBardcoreCreacion() {
     audioActual.play()
    })
 }
-   musicaDiv.appendChild(menuMusica)
+   body.appendChild(menuMusica)
 }
 
 const presentacion1 = document.querySelector('#presentacion1')
@@ -65,7 +67,6 @@ const letrasDescartadas = document.querySelector('#introContenedor')
 const musicaBtn = document.createElement('button')
 const musicaDiv = document.createElement('div')
 const reiniciarBtn = document.createElement('button')
-const helpBtn = document.createElement('button')
 
 function intro1() {
     presentacion1.textContent = 'Hola. Este es Bob.'
@@ -92,14 +93,10 @@ function intro4() {
 }
 
 function intro5() {
-    musicaDiv.classList.add('.musicaDiv')
-    opciones.appendChild(musicaDiv)
     reiniciarBtn.id='reiniciarBtn'
     reiniciarBtn.textContent = 'HAZLO POR BOB'
-    helpBtn.id='helpBtn'
-    helpBtn.textContent = '?'
     opciones.appendChild(reiniciarBtn)
-    opciones.appendChild(helpBtn)
+
 }
 function introTotal(cb1,cb2,cb3,cb4,cb5) {
     setTimeout(cb1,2000)
@@ -158,13 +155,26 @@ const otraPalabraBtn = document.createElement('button')
 const bobQuejas = document.createElement('div')
 const inputDiv = document.createElement('div')
 const inputContent = document.createElement('input')
+
 const bobContenedor = document.createElement('div')
 const divsBobContenedor = document.createElement('div')
 const bobSubcont1 = document.createElement('div')
 const bobSubcont2 = document.createElement('div')
 const bob = document.createElement('img')
 
+const contadorContenedor = document.createElement('div')
+const ganadasContenedor = document.createElement('div')
+const perdidasContenedor = document.createElement('div')
+const ganadasPalabra = document.createElement('div')
+const ganadas = document.createElement('div')
+const perdidasPalabra = document.createElement('div')
+const perdidas = document.createElement('div')
+
+
+
 function borrarIntro() {
+    musicaDiv.classList.add('.musicaDiv')
+    opciones.appendChild(musicaDiv)
     musicaBtn.id = 'musicaBtn'
     musicaBtn.textContent = 'MUSICA'
     eventosMusicaBtn()
@@ -173,7 +183,27 @@ function borrarIntro() {
     opciones.removeChild(reiniciarBtn)
     otraPalabraBtn.id = 'otraPalabraBtn'
     otraPalabraBtn.textContent = 'OTRA PALABRA'
-    opciones.insertBefore(otraPalabraBtn,helpBtn)
+    opciones.appendChild(otraPalabraBtn)
+
+    contadorContenedor.classList.add('contadorContenedor')
+    ganadasContenedor.id = 'ganadasContenedor'
+    perdidasContenedor.id = 'perdidasContenedor'
+    ganadasContenedor.classList.add('contadorContenedores')
+    perdidasContenedor.classList.add('contadorContenedores')
+    ganadasPalabra.id = 'ganadasPalabra'
+    perdidasPalabra.id = 'perdidasPalabra'
+    ganadas.id = 'ganadas'
+        ganadas.textContent = 0
+    perdidas.id = 'perdidas'
+        perdidas.textContent = 0
+
+    ganadasContenedor.appendChild(ganadasPalabra)
+    ganadasContenedor.appendChild(ganadas)
+    perdidasContenedor.appendChild(perdidasPalabra)
+    perdidasContenedor.appendChild(perdidas)
+    contadorContenedor.appendChild(ganadasContenedor)
+    contadorContenedor.appendChild(perdidasContenedor)
+    opciones.appendChild(contadorContenedor)
 
     intro.removeChild(presentacion1)
     intro.removeChild(presentacion2)
@@ -319,6 +349,7 @@ function finDelJuego(array){
     if(intentos === 7) {
         inputContent.removeEventListener('keypress',eventoInput)
         bobQuejas.textContent = 'Perdiste! Pero si te sirve de consuelo, yo perdi mas'
+        perdidas.textContent ++
         bob.src = './imagenes/muerto_cuello.png'
         reproducir('./sonidos/muerto.mp3',0,1.0)
         for(let i=0 ; i< array.length ; i++) {
@@ -333,6 +364,7 @@ function finDelJuego(array){
             } else if (i === array.length - 1){
                 inputContent.removeEventListener('keypress',eventoInput)
                 bobQuejas.textContent = 'Ganaste! Muchas graciaaas'
+                ganadas.textContent ++
                 reproducir('./sonidos/trompetas.mp3',0,1.5)
                 if(!ahorcado.contains(bobContenedor)) {
                     ahorcado.appendChild(bobContenedor)
@@ -404,6 +436,5 @@ botonStart()
 //Pensar mejor mensajitos de bob
 //Cambiar color de letras, rojo para cuando perdes, verde para las que si son
 //Poner todo mas lindo
-//Poner funcion que vaya diciendo cuantas palabras hiciste bien y cuantas mal
 //Cuando no queden palabras, se termina el juego
 

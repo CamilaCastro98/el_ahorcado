@@ -71,8 +71,21 @@ html, body {
 .musicaDiv {
     display: flex;
 }
+.menuMusica {
+    background-color: aqua;
+}
 
 /* JUEGO */
+
+.contadorContenedor {
+    display: flex;
+    background-color: antiquewhite;
+}
+.contadorContenedores {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
 
 #letrasDescartadas {
     display: flex;
