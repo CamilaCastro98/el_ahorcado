@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/public/game.html"
+        "dest": "/public/index.html"
       }
     ]
   }
